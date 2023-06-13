@@ -1,6 +1,7 @@
 # Go High Level CRUD POC based on REST API v.1
 
-Using TypeScript, React with Tailwind, React Query, React Router Dom 6x & Daisy UI
+Using TypeScript, React with Tailwind, React Query, React Router Dom 6x & Daisy UI.
+GHL Endpoints: Contacts, Appointments & Users
 
 ## Available Scripts
 
