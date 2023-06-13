@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.btn {
+  @apply rounded-none;
+}
+
+.btn-error {
+  @apply text-white;
+}
+
+.btn-secondary {
+  @apply bg-sky-400;
+  @apply border-sky-400;
+}
+// @layer components {
+//   .list-group {
+//     @apply divide-y divide-gray-200;
+//   }
+//   .list-group-item {
+//     @apply p-4;
+//     @apply list-none;
+//   }
+// }
