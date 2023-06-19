@@ -1,6 +1,5 @@
 import React from "react";
 import { Container, Row, Box } from "../components/layouts";
-import "./Home.scss";
 
 const HomePage = () => {
   return (

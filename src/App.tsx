@@ -1,24 +1,18 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import {
-  Header,
-  Main,
-  Footer,
-  Layout,
-  Navbar,
-  Container,
-  Footerbar,
-} from "./components/layouts";
-import Home from "./pages/Home";
-import Demo from "./pages/Demo";
-import PageOne from "./pages/PageOne";
-import NotFoundPage from "./pages/NotFoundPage";
-import SendEmail from "./pages/SendEmail";
 import "./App.scss";
-import MoshPage from "./pages/MoshPage";
-import PageDaisyUI from "./pages/PageDaisyUI";
-import NavbarFlowbite from "./components/layouts/NavbarFlowbite";
-import ContactsGHLPage from "./pages/ContactsGHLPage";
+import {
+  Container,
+  Footer,
+  Footerbar,
+  Header,
+  Layout,
+  Main,
+} from "./components/layouts";
 import AppointmentsGHLPage from "./pages/AppointmentsGHLPage";
+import ContactsGHLPage from "./pages/ContactsGHLPage";
+import Demo from "./pages/Demo";
+import Home from "./pages/HomePage";
+import NotFoundPage from "./pages/NotFoundPage";
 import UsersGHLPage from "./pages/UsersGHLPage";
 
 function App() {
@@ -32,7 +26,7 @@ function App() {
               FULL={false}
               className={"flex justify-center"}
             >
-              <Navbar className={"w-11/12 xl:w-4/5"} />
+              {/* <Navbar className={"w-11/12 xl:w-4/5"} /> */}
               {/* <NavbarFlowbite /> */}
             </Container>
           </Header>
@@ -40,9 +34,6 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/demo" element={<Demo />} />
-              <Route path="/page-one" element={<PageDaisyUI />} />
-              <Route path="/page-two" element={<MoshPage />} />
-              <Route path="/send-mail" element={<SendEmail />} />
               <Route path="/contacts" element={<ContactsGHLPage />} />
               <Route path="/appointments" element={<AppointmentsGHLPage />} />
               <Route path="/users" element={<UsersGHLPage />} />
