@@ -9,6 +9,7 @@ import AppointmentsGHLPage from "./pages/AppointmentsGHLPage";
 import UsersGHLPage from "./pages/UsersGHLPage";
 import Demo from "./pages/Demo";
 import UserDetails from "./components/UserDetails";
+import ContactDetails from "./components/ContactDetails";
 
 const router = createBrowserRouter([
   {
@@ -27,6 +28,11 @@ const router = createBrowserRouter([
         path: "users",
         element: <UsersGHLPage />,
         children: [{ path: ":id", element: <UserDetails /> }],
+      },
+      {
+        path: "contacts",
+        element: <ContactsGHLPage />,
+        children: [{ path: ":id", element: <ContactDetails /> }],
       },
       { path: "demo", element: <Demo /> },
     ],

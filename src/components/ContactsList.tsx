@@ -1,21 +1,23 @@
 import { Link } from "react-router-dom";
 import { Box, Container, Main } from "../components/layouts";
 import "./UsersList.scss";
-import { User } from "../entities";
+import { Contact, User } from "../entities";
 
 interface Props {
-  users: User[] | undefined;
+  contacts: Contact[] | undefined;
 }
 
-const UsersList = ({ users }: Props) => {
+const ContactsList = ({ contacts }: Props) => {
+  console.log("CONTACT LIST", contacts);
+
   return (
     <Main>
       <Container FULL={false} pageTitle="Routing" className={"bg-gray-100"}>
         <Box className="">
           <ul className="list-group">
-            {users?.map((user) => (
-              <Link to={`/users/${user.id}`} key={user.id}>
-                <li className="list-group-item my-2">{user.name}</li>
+            {contacts?.map((contact) => (
+              <Link to={`/contacts/${contact.id}`} key={contact.id}>
+                <li className="list-group-item my-2">{contact.firstName}</li>
               </Link>
             ))}
           </ul>
@@ -25,4 +27,4 @@ const UsersList = ({ users }: Props) => {
   );
 };
 
-export default UsersList;
+export default ContactsList;

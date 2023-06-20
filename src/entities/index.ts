@@ -1,3 +1,22 @@
+export interface Contact {
+  id: string;
+  locationId: string;
+  contactName: string;
+  firstName: string;
+  lastName: string;
+  companyName: string | null;
+  email: string;
+  phone: string | null;
+}
+
+export interface ContactSingle {
+  contact: Contact;
+}
+
+// export interface ContactsData {
+//   contacts: Contact[];
+// }
+
 export interface User {
   id: string;
   name: string;
@@ -12,6 +31,6 @@ export interface User {
   };
 }
 
-export interface UsersData {
-  users: User[];
-}
+// export interface UsersData {
+//   users: User[];
+// }
