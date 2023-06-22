@@ -11,7 +11,7 @@ const UserDetails = () => {
 
   if (error) return <h1>A Moose error has occured! </h1>;
 
-  console.log(data);
+  // console.log(data);
 
   return (
     <Main>

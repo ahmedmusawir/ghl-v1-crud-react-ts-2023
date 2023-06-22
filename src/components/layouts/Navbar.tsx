@@ -38,6 +38,7 @@ const Navbar = ({ className }: Props) => {
           <NavItem to="/contacts">Contacts</NavItem>
           <NavItem to="/users">Users</NavItem>
           <NavItem to="/appointments">Appointments</NavItem>
+          <NavItem to="/slots">Slots</NavItem>
           <NavItem to="/iframe">Responsive</NavItem>
         </ul>
       </div>

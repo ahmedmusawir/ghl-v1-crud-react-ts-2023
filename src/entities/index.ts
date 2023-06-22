@@ -1,3 +1,11 @@
+export interface Slots {
+  slots: string[];
+}
+
+export interface AppointmentSlots {
+  date: Slots;
+}
+
 export interface Contact {
   id: string;
   locationId: string;
@@ -7,6 +15,7 @@ export interface Contact {
   companyName: string | null;
   email: string;
   phone: string | null;
+  timezone: string | null;
 }
 
 export interface ContactSingle {

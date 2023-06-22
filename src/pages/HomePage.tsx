@@ -4,7 +4,7 @@ import { Container, Row, Box } from "../components/layouts";
 const HomePage = () => {
   return (
     <Container className={""} FULL={false} pageTitle={"Home"}>
-      <Row className={"prose"}>
+      <Row className={"prose max-w-none"}>
         <h1 className="h1">This could be a starting point ...</h1>
         <h2 className="h2">
           Lorem ipsum dolor, sit amet consectetur adipisicing elit
@@ -30,7 +30,7 @@ const HomePage = () => {
           Iure.
         </p>
       </Row>
-      <Row className={"prose flex flex-wrap justify-around"}>
+      <Row className={"prose flex flex-wrap justify-around max-w-none"}>
         {/* p-5 CLASS WILL BREAK EVERYTHING */}
         <Box className={"p-3 w-[32rem]"}>
           <h3>This is box one w/ prose class</h3>

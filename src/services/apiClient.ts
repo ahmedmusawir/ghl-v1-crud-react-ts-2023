@@ -1,4 +1,5 @@
 import axios from "axios";
+import { AppointmentSlots } from "../entities";
 
 const apiKey = process.env.REACT_APP_GHL_API_KEY;
 
@@ -9,6 +10,10 @@ const axiosInstance = axios.create({
 
 export interface ApiResponse<T> {
   [key: string]: T[];
+}
+
+export interface ApiSlotsResponse<T> {
+  data: T;
 }
 
 class APIClient<T> {
@@ -22,6 +27,17 @@ class APIClient<T> {
     return axiosInstance
       .get<ApiResponse<T>>(this.endpoint)
       .then((res) => res.data);
+  };
+
+  // New method that takes parameters
+  getAllWithParams = (params: any) => {
+    return axiosInstance
+      .get<ApiSlotsResponse<AppointmentSlots>>(this.endpoint, { params })
+      .then((res) => {
+        console.log("API DATA:", res.data.data);
+
+        return res.data.data;
+      });
   };
 
   get = (id: number | string) => {

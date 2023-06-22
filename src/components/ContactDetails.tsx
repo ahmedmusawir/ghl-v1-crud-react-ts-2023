@@ -18,10 +18,38 @@ const ContactDetails = () => {
     <Main>
       <Container FULL={false} pageTitle="Routing" className={""}>
         <Box className="p-7 prose max-w-none">
-          <h3>Contact ID: {params.id}</h3>
-          <h3>First Name: {contact?.firstName}</h3>
-          <h3>Last Name: {contact?.lastName}</h3>
-          <h3>Email: {contact?.email}</h3>
+          <h3>
+            <span className="font-extrabold text-primary">User ID:</span>{" "}
+            {params.id}
+          </h3>
+          <h3>
+            <span className="font-extrabold text-primary">First Name:</span>{" "}
+            {contact?.firstName}
+          </h3>
+          <h3>
+            <span className="font-extrabold text-primary">Last Name:</span>{" "}
+            {contact?.lastName}
+          </h3>
+          <h3>
+            <span className="font-extrabold text-primary">Email:</span>{" "}
+            {contact?.email}
+          </h3>
+          <h3>
+            <span className="font-extrabold text-primary">Phone:</span>{" "}
+            {contact?.phone}
+          </h3>
+          <h3>
+            <span className="font-extrabold text-primary">Company:</span>{" "}
+            {contact?.companyName}
+          </h3>
+          <h3>
+            <span className="font-extrabold text-primary">Location:</span>{" "}
+            {contact?.locationId}
+          </h3>
+          <h3>
+            <span className="font-extrabold text-primary">Time Zone:</span>{" "}
+            {contact?.timezone}
+          </h3>
         </Box>
       </Container>
     </Main>

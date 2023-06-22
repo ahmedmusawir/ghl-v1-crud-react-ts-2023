@@ -10,6 +10,7 @@ import UsersGHLPage from "./pages/UsersGHLPage";
 import Demo from "./pages/Demo";
 import UserDetails from "./components/UserDetails";
 import ContactDetails from "./components/ContactDetails";
+import SlotsGHLPage from "./pages/SlotsGHLPage";
 
 const router = createBrowserRouter([
   {
@@ -24,6 +25,7 @@ const router = createBrowserRouter([
       { path: "iframe", element: <IframeTestPage /> },
       { path: "contacts", element: <ContactsGHLPage /> },
       { path: "appointments", element: <AppointmentsGHLPage /> },
+      { path: "slots", element: <SlotsGHLPage /> },
       {
         path: "users",
         element: <UsersGHLPage />,

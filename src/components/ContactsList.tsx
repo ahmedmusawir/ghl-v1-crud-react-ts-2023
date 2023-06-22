@@ -17,7 +17,7 @@ const ContactsList = ({ contacts }: Props) => {
           <ul className="list-group">
             {contacts?.map((contact) => (
               <Link to={`/contacts/${contact.id}`} key={contact.id}>
-                <li className="list-group-item my-2">{contact.firstName}</li>
+                <li className="list-group-item my-2">{contact.contactName}</li>
               </Link>
             ))}
           </ul>

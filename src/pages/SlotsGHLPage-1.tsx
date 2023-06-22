@@ -3,10 +3,14 @@ import { useState } from "react";
 import DatePicker from "react-datepicker";
 import moment from "moment";
 import "react-datepicker/dist/react-datepicker.css";
+import useSlots from "../hooks/useSlots";
 
-const AppointmentsGHLPage = () => {
+const SlotsGHLPage = () => {
   const [startDate, setStartDate] = useState<Date | null>(null);
   const [endDate, setEndDate] = useState<Date | null>(null);
+
+  let startMilliseconds: number | string = 0;
+  let endMilliseconds: number | string = 0;
 
   const handleStartDateChange = (date: Date | null) => {
     setStartDate(date);
@@ -17,16 +21,30 @@ const AppointmentsGHLPage = () => {
   };
 
   const handleButtonClick = () => {
-    const startMilliseconds = startDate
+    startMilliseconds = startDate
       ? moment(startDate).valueOf()
       : "No date selected";
-    const endMilliseconds = endDate
-      ? moment(endDate).valueOf()
-      : "No date selected";
+    endMilliseconds = endDate ? moment(endDate).valueOf() : "No date selected";
 
     console.log("Start Date in Milliseconds: ", startMilliseconds);
     console.log("End Date in Milliseconds: ", endMilliseconds);
   };
+
+  const { data, error, isLoading } = useSlots({
+    calendarId: "LtoA6eEnqtWbvggtrsVv",
+    startDate: startMilliseconds,
+    endDate: endMilliseconds,
+    timezone: "America/New_York",
+  });
+
+  //   const { data, error, isLoading } = useSlots({
+  //     calendarId: "LtoA6eEnqtWbvggtrsVv",
+  //     startDate: 1686618166716,
+  //     endDate: 1688062098126,
+  //     timezone: "America/New_York",
+  //   });
+
+  console.log("GHL SLOTS", data);
 
   return (
     <Container className={""} FULL={false} pageTitle={"Appointments"}>
@@ -66,4 +84,4 @@ const AppointmentsGHLPage = () => {
   );
 };
 
-export default AppointmentsGHLPage;
+export default SlotsGHLPage;
