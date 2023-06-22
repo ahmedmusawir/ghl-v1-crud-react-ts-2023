@@ -6,28 +6,9 @@ import "react-datepicker/dist/react-datepicker.css";
 import useSlots from "../hooks/useSlots";
 import Spinner from "../components/ui-ux/Spinner";
 
-type DataWithSlots = { [key: string]: { slots: string[] } };
-
 // FOR TROUBLESHOOTING ONLY
 const formatDate = (date: Date | null) => {
   return date ? moment(date).format("MMM D, YYYY") : "No date selected";
-};
-
-// FOR STRING TO FORMATTED DATE STRING
-const formatStringToDate = (date: string) => {
-  return date ? moment(date).format("dddd, MMMM D, YYYY") : "No date selected";
-};
-
-// FORMATTING TIME STRING
-const getTimeFromISOString = (isoString: string) => {
-  const date = new Date(isoString);
-  // extract the time part and format it as "8:30 AM"
-  const timeString = date.toLocaleTimeString("en-US", {
-    hour: "numeric",
-    minute: "numeric",
-    hour12: true,
-  });
-  return timeString;
 };
 
 const SlotsGHLPage = () => {
@@ -67,17 +48,25 @@ const SlotsGHLPage = () => {
     timezone: "America/New_York",
   });
 
+  // const { data, error, isLoading } = useSlots({
+  //   calendarId: "LtoA6eEnqtWbvggtrsVv",
+  //   startDate: 1686618166716,
+  //   endDate: 1688062098126,
+  //   timezone: "America/New_York",
+  // });
+
   console.log("GHL SLOTS", data);
 
+  // const slots = data?.[date].slots
+
   return (
-    <Container className={"border"} FULL pageTitle={"Appointments"}>
+    <Container className={""} FULL={false} pageTitle={"Appointments"}>
       <Row className={"prose"}>
         <h1 className="h1">GHL Appointments</h1>
         <h4 className="h2">REST API v.1</h4>
       </Row>
-      {/* <Row className={"grid gap-3 grid-auto-fit p-1"}> */}
-      <Row className={"flex p-1"}>
-        <Box className={"flex-2 border border-gray-300"}>
+      <Row className={"grid gap-3 grid-auto-fit p-1"}>
+        <Box className={""}>
           <div className="p-10">
             <div className="mb-5">
               <label className="block mb-1">Start Date</label>
@@ -98,37 +87,30 @@ const SlotsGHLPage = () => {
             </div>
 
             <button onClick={handleButtonClick} className="btn btn-primary">
-              Show Available Slots
+              Show dates in milliseconds
             </button>
           </div>
         </Box>
-        <Box
-          className={
-            "flex-1 border bg-gray-100 prose max-w-none text-center pt-3 "
-          }
-        >
+        <Box className={"border bg-gray-100 prose text-center pt-3"}>
           <h3 className="text-primary">Time Slots</h3>
           <hr />
           {isLoading && <Spinner />}
+
           {!isLoading &&
             data &&
-            Object.keys(data as DataWithSlots).map((date: string) => (
+            Object.keys(data).map((date: string) => (
               <div key={date}>
-                <h3>{formatStringToDate(date)}</h3>
-                <Row className={"grid gap-1 grid-auto-fit"}>
-                  {(data as DataWithSlots)[date].slots &&
-                    (data as DataWithSlots)[date].slots.map(
-                      (slot: string, index: number) => (
-                        <button key={index} className="btn btn-primary ">
-                          {getTimeFromISOString(slot)}
-                        </button>
-                      )
-                    )}
-                </Row>
+                <h3>{date}</h3>
+                {(data as { [key: string]: { slots: string[] } })[
+                  date
+                ].slots.map((slot: string, index: number) => (
+                  <div key={index}>{slot}</div>
+                ))}
               </div>
             ))}
 
           {/* KEEP THE FOLLOWING AS A REF FOR THE FUTURE. THE FOLLOWING WAS NOT WORKING */}
+
           {/* {!isLoading &&
             data &&
             Object.keys(data).map((date: string) => (

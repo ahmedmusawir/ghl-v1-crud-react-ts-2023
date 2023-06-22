@@ -6,12 +6,6 @@ export interface AppointmentSlots {
   [date: string]: Slots;
 }
 
-// export interface AppointmentSlots {
-//   [date: string]: {
-//     slots: string[];
-//   };
-// }
-
 export interface Contact {
   id: string;
   locationId: string;
@@ -28,10 +22,6 @@ export interface ContactSingle {
   contact: Contact;
 }
 
-// export interface ContactsData {
-//   contacts: Contact[];
-// }
-
 export interface User {
   id: string;
   name: string;
@@ -45,7 +35,3 @@ export interface User {
     locationIds: string[];
   };
 }
-
-// export interface UsersData {
-//   users: User[];
-// }
