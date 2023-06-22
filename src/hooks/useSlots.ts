@@ -10,7 +10,7 @@ const useSlots = (params: {
   endDate: number;
   timezone: string;
 }) =>
-  useQuery<ApiResponse<AppointmentSlots>, Error>({
+  useQuery<AppointmentSlots, Error>({
     queryKey: ["slots", params.startDate, params.endDate],
     queryFn: () => slotService.getAllSlots(params),
     staleTime: ms("2m"), // 2 minutes

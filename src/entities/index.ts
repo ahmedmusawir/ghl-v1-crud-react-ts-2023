@@ -3,10 +3,14 @@ export interface Slots {
 }
 
 export interface AppointmentSlots {
-  [date: string]: {
-    slots: string[];
-  };
+  [date: string]: Slots;
 }
+
+// export interface AppointmentSlots {
+//   [date: string]: {
+//     slots: string[];
+//   };
+// }
 
 export interface Contact {
   id: string;

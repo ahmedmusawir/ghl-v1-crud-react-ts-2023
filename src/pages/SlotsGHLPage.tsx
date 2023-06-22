@@ -101,11 +101,27 @@ const SlotsGHLPage = () => {
             Object.keys(data).map((date: string) => (
               <div key={date}>
                 <h3>{date}</h3>
-                {/* {data.date.slots.map((slot: string, index: number) => (
+                {(data as { [key: string]: { slots: string[] } })[
+                  date
+                ].slots.map((slot: string, index: number) => (
                   <div key={index}>{slot}</div>
-                ))} */}
+                ))}
               </div>
             ))}
+
+          {/* KEEP THE FOLLOWING AS A REF FOR THE FUTURE. THE FOLLOWING WAS NOT WORKING */}
+
+          {/* {!isLoading &&
+            data &&
+            Object.keys(data).map((date: string) => (
+              <div key={date}>
+                <h3>{date}</h3>
+                {data.[date].slots && data.[date].slots.map((slot: string, index: number) => (
+                  <div key={index}>{slot}</div>
+                ))}
+                
+              </div>
+            ))} */}
         </Box>
       </Row>
     </Container>
