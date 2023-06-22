@@ -1,6 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
 import slotService from "../services/slotService";
-import { ApiResponse } from "../services/apiClient";
 import { AppointmentSlots } from "../entities";
 import ms from "ms";
 

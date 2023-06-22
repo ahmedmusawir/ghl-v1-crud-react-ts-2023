@@ -12,10 +12,6 @@ export interface ApiResponse<T> {
   [key: string]: T[];
 }
 
-export interface ApiSlotsResponse<T> {
-  data: T;
-}
-
 class APIClient<T> {
   endpoint: string;
 
@@ -31,12 +27,9 @@ class APIClient<T> {
 
   // New method that takes parameters
   getAllWithParams = (params: any) => {
-    return axiosInstance
-      .get<AppointmentSlots>(this.endpoint, { params })
-      .then((res) => {
-        // console.log("API DATA:", res.data.data);
-        return res.data;
-      });
+    return axiosInstance.get<T>(this.endpoint, { params }).then((res) => {
+      return res.data;
+    });
   };
 
   get = (id: number | string) => {

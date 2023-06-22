@@ -3,6 +3,8 @@ import { useState } from "react";
 import DatePicker from "react-datepicker";
 import moment from "moment";
 import "react-datepicker/dist/react-datepicker.css";
+import useAppointments from "../hooks/useAppointments";
+import Spinner from "../components/ui-ux/Spinner";
 
 const AppointmentsGHLPage = () => {
   const [startDate, setStartDate] = useState<Date | null>(null);
@@ -28,14 +30,29 @@ const AppointmentsGHLPage = () => {
     console.log("End Date in Milliseconds: ", endMilliseconds);
   };
 
+  const { data, error, isLoading } = useAppointments({
+    calendarId: "LtoA6eEnqtWbvggtrsVv",
+    startDate: 1686618166716,
+    endDate: 1688062098126,
+    includeAll: true,
+  });
+
+  const appointments = data?.appointments;
+
+  if (isLoading) return <Spinner />;
+
+  if (error) return <h1>A Moose error has occured! </h1>;
+
+  console.log("All Appointments", data);
+
   return (
-    <Container className={""} FULL={false} pageTitle={"Appointments"}>
+    <Container className={""} FULL pageTitle={"Appointments"}>
       <Row className={"prose"}>
         <h1 className="h1">GHL Appointments</h1>
         <h4 className="h2">REST API v.1</h4>
       </Row>
-      <Row className={"grid gap-3 grid-auto-fit p-1"}>
-        <Box className={""}>
+      <Row className={"flex p-1"}>
+        <Box className={"flex-2 border border-gray-300"}>
           <div className="p-10">
             <div className="mb-5">
               <label className="block mb-1">Start Date</label>
@@ -56,11 +73,52 @@ const AppointmentsGHLPage = () => {
             </div>
 
             <button onClick={handleButtonClick} className="btn btn-primary">
-              Show dates in milliseconds
+              Show Appointments
             </button>
           </div>
         </Box>
-        <Box className={"border bg-gray-100"}>Time Slots</Box>
+        <Box
+          className={
+            "flex-1 border bg-gray-100 prose max-w-none text-center pt-3"
+          }
+        >
+          <h3 className="text-primary">Appointments</h3>
+          <hr />
+          <Box className="grid gap-3 grid-auto-fit p-1">
+            {appointments?.map((appointment) => (
+              <div
+                className="card w-full bg-primary text-primary-content"
+                key={appointment.id}
+              >
+                <div className="card-body text-left">
+                  <h2 className="card-title text-white">
+                    {appointment.contact.firstName}{" "}
+                    {appointment.contact.lastName}
+                  </h2>
+                  <p className="">
+                    <span className="font-bold">ID:</span> {appointment.id}
+                  </p>
+                  <p className="">
+                    <span className="font-bold">STATUS:</span>{" "}
+                    {appointment.appointmentStatus}
+                  </p>
+                  <p className="">
+                    <span className="font-bold">EMAIL:</span>{" "}
+                    {appointment.contact.email}
+                  </p>
+                  <p className="">
+                    <span className="font-bold">PHONE:</span>{" "}
+                    {appointment.contact.phone}
+                  </p>
+                  <div className="card-actions justify-end">
+                    <button className="btn btn-warning">Reschedule</button>
+                    <button className="btn btn-error">Delete</button>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </Box>
+        </Box>
       </Row>
     </Container>
   );
