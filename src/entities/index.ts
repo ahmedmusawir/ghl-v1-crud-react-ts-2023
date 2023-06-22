@@ -3,7 +3,9 @@ export interface Slots {
 }
 
 export interface AppointmentSlots {
-  date: Slots;
+  [date: string]: {
+    slots: string[];
+  };
 }
 
 export interface Contact {

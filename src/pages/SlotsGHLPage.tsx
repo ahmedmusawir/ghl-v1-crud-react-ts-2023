@@ -48,18 +48,16 @@ const SlotsGHLPage = () => {
     timezone: "America/New_York",
   });
 
-  // if (isLoading) return <Spinner />;
+  // const { data, error, isLoading } = useSlots({
+  //   calendarId: "LtoA6eEnqtWbvggtrsVv",
+  //   startDate: 1686618166716,
+  //   endDate: 1688062098126,
+  //   timezone: "America/New_York",
+  // });
 
-  // if (error) return console.log("HOOK ERROR:", error.message);
+  console.log("GHL SLOTS", data);
 
-  //   const { data, error, isLoading } = useSlots({
-  //     calendarId: "LtoA6eEnqtWbvggtrsVv",
-  //     startDate: 1686618166716,
-  //     endDate: 1688062098126,
-  //     timezone: "America/New_York",
-  //   });
-
-  console.log("GHL SLOTS", data?.date.slots);
+  // const slots = data?.[date].slots
 
   return (
     <Container className={""} FULL={false} pageTitle={"Appointments"}>
@@ -103,9 +101,9 @@ const SlotsGHLPage = () => {
             Object.keys(data).map((date: string) => (
               <div key={date}>
                 <h3>{date}</h3>
-                {data.date.slots.map((slot: string, index: number) => (
+                {/* {data.date.slots.map((slot: string, index: number) => (
                   <div key={index}>{slot}</div>
-                ))}
+                ))} */}
               </div>
             ))}
         </Box>
