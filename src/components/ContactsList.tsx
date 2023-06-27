@@ -8,7 +8,7 @@ interface Props {
 }
 
 const ContactsList = ({ contacts }: Props) => {
-  console.log("CONTACT LIST", contacts);
+  // console.log("CONTACT LIST", contacts);
 
   return (
     <Main>
@@ -17,7 +17,9 @@ const ContactsList = ({ contacts }: Props) => {
           <ul className="list-group">
             {contacts?.map((contact) => (
               <Link to={`/contacts/${contact.id}`} key={contact.id}>
-                <li className="list-group-item my-2">{contact.contactName}</li>
+                <li className="p-4 my-2 bg-primary text-white">
+                  {contact.contactName}
+                </li>
               </Link>
             ))}
           </ul>

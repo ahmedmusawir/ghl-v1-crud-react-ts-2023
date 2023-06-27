@@ -14,16 +14,8 @@ const ContactsGHLPage = () => {
   // console.log(contacts);
 
   const styles = useSpring({
-    to: async (next, cancel) => {
-      if (isOpen) {
-        await next({ display: "block" });
-        await next({ opacity: 1, maxHeight: 1000 });
-      } else {
-        await next({ opacity: 0, maxHeight: 0 });
-        await next({ display: "none" });
-      }
-    },
-    from: { opacity: 0, maxHeight: 0, display: "none" },
+    from: { opacity: 0, marginTop: -500 },
+    to: { opacity: 1, marginTop: 0 },
   });
 
   if (isLoading) return <Spinner />;
@@ -51,7 +43,7 @@ const ContactsGHLPage = () => {
         </button>
       </Row>
       {/* <Row className={isOpen ? "prose max-w-none" : "prose max-w-none hidden"}> */}
-      <animated.div style={styles}>
+      <animated.div style={styles} className={isOpen ? "" : "hidden"}>
         {/* <Row className={`prose max-w-none ${isOpen ? "" : "hidden"}`}> */}
         <Row className={`prose max-w-none`}>
           <h2 className="h1">Insert Contacts</h2>

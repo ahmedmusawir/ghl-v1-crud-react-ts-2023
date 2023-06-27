@@ -13,6 +13,9 @@ const useSingleContact = (id: string = "") =>
     queryFn: () => singleContactService.get(id),
     enabled: !!id,
     staleTime: ms("2m"), // 2 minutes
+    refetchOnWindowFocus: false,
+    refetchOnReconnect: false,
+    retry: false,
   });
 
 export default useSingleContact;

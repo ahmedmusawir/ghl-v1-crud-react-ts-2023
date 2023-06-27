@@ -1,3 +1,5 @@
+export const CACHE_KEY_CONTACTS = ["contacts"];
+
 export interface Appointment {
   id: string;
   address: string;
@@ -32,11 +34,11 @@ export interface Contact {
   id: string;
   locationId: string;
   contactName: string;
-  firstName: string | null;
-  lastName: string | null;
-  companyName: string | null;
-  email: string;
-  phone: string | null;
+  firstName?: string | null;
+  lastName?: string | null;
+  companyName?: string | null;
+  email?: string;
+  phone?: string | null;
   timezone: string | null;
 }
 

@@ -15,7 +15,7 @@ const UsersList = ({ users }: Props) => {
           <ul className="list-group">
             {users?.map((user) => (
               <Link to={`/users/${user.id}`} key={user.id}>
-                <li className="list-group-item my-2">{user.name}</li>
+                <li className="bg-primary text-white p-4 my-2">{user.name}</li>
               </Link>
             ))}
           </ul>

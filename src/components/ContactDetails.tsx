@@ -1,18 +1,33 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { Box, Container, Main } from "../components/layouts";
 import Spinner from "./ui-ux/Spinner";
 import useSingleContact from "../hooks/useSingleContact";
+import useDeleteContact from "../hooks/useDeleteContact";
 
 const ContactDetails = () => {
   const params = useParams();
   const { data, isLoading, error } = useSingleContact(params.id);
   const { contact } = data || {};
 
+  const { mutateAsync } = useDeleteContact();
+
   if (isLoading) return <Spinner />;
 
   if (error) return <h1>A Moose error has occured! </h1>;
 
-  //   console.log(contact?.email);
+  const deleteItem = async (id: string = "") => {
+    if (window.confirm("Are you sure you want to delete this item?")) {
+      try {
+        await mutateAsync(id);
+        console.log("Todo deleted successfully");
+        // window.location.reload();
+      } catch (err) {
+        console.log("An error occurred:", err);
+      }
+    } else {
+      console.log("Deletion cancelled");
+    }
+  };
 
   return (
     <Main>
@@ -46,10 +61,14 @@ const ContactDetails = () => {
             <span className="font-extrabold text-primary">Location:</span>{" "}
             {contact?.locationId}
           </h3>
-          <h3>
-            <span className="font-extrabold text-primary">Time Zone:</span>{" "}
-            {contact?.timezone}
-          </h3>
+        </Box>
+        <Box className="p-7 prose max-w-none">
+          <button
+            className="btn btn-error"
+            onClick={() => deleteItem(contact?.id)}
+          >
+            Delete
+          </button>
         </Box>
       </Container>
     </Main>

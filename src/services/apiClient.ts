@@ -48,7 +48,7 @@ class APIClient<T> {
       .then((res) => res.data);
   };
 
-  delete = (id: number) => {
+  delete = (id: number | string) => {
     return axiosInstance
       .delete(`${this.endpoint}/${id}`)
       .then((res) => res.data);
