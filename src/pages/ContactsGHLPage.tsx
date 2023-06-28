@@ -10,8 +10,8 @@ import { useState } from "react";
 const ContactsGHLPage = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { data, isLoading, error } = useContacts();
-  const contacts = data?.contacts;
-  // console.log(contacts);
+
+  console.log("data:", data);
 
   const styles = useSpring({
     to: async (next, cancel) => {
@@ -63,7 +63,13 @@ const ContactsGHLPage = () => {
       </animated.div>
       <Row className={"grid gap-3 grid-auto-fit p-1"}>
         <Box className={""}>
-          <ContactsList contacts={contacts} />
+          {/* {data?.map((contact, index) => (
+            <div key={index}>
+              <p>Email: {contact.email}</p>
+            </div>
+          ))} */}
+
+          {/* <ContactsList contacts={contacts} /> */}
         </Box>
         <Box className={"border bg-gray-100"}>
           <Outlet />

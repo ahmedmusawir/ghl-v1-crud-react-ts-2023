@@ -5,7 +5,7 @@ import contactService from "../services/contactService";
 import { CACHE_KEY_CONTACTS, Contact } from "../entities";
 
 const useContacts = () =>
-  useQuery<ApiResponse<Contact>, Error>({
+  useQuery<ApiResponse<Contact[]>, Error>({
     queryKey: CACHE_KEY_CONTACTS,
     queryFn: contactService.getAll,
     staleTime: ms("2m"), // 2 minutes
