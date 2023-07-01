@@ -6,12 +6,12 @@ import { CACHE_KEY_CONTACTS, Contact } from "../entities";
 
 const useContacts = () =>
   useQuery<ApiResponse<Contact>, Error>({
-    queryKey: CACHE_KEY_CONTACTS,
+    queryKey: [CACHE_KEY_CONTACTS, "all"],
     queryFn: contactService.getAll,
     staleTime: ms("2m"), // 2 minutes
-    refetchOnMount: false,
-    refetchOnWindowFocus: false,
-    retry: false,
+    // refetchOnMount: false,
+    // refetchOnWindowFocus: false,
+    // retry: false,
   });
 
 export default useContacts;
