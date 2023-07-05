@@ -11,6 +11,7 @@ import Demo from "./pages/Demo";
 import UserDetails from "./components/UserDetails";
 import ContactDetails from "./components/ContactDetails";
 import SlotsGHLPage from "./pages/SlotsGHLPage";
+import RtkTestPage from "./pages/RtkTestPage";
 
 const router = createBrowserRouter([
   {
@@ -23,6 +24,7 @@ const router = createBrowserRouter([
         element: <HomePage />,
       },
       { path: "iframe", element: <IframeTestPage /> },
+      { path: "rtk", element: <RtkTestPage /> },
       { path: "contacts", element: <ContactsGHLPage /> },
       { path: "appointments", element: <AppointmentsGHLPage /> },
       { path: "slots", element: <SlotsGHLPage /> },
