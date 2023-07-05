@@ -9,11 +9,6 @@ import ContactInsertForm from "../components/ContactInsertForm";
 
 const ContactsGHLPage = () => {
   const [isOpen, setIsOpen] = useState(false);
-<<<<<<< HEAD
-  const { data, isLoading, error } = useContacts();
-
-  console.log("data:", data);
-=======
 
   // NEW CONTEXT BASED HOOK
   const { contacts, isLoading, error } = useFetchContacts();
@@ -22,7 +17,6 @@ const ContactsGHLPage = () => {
   // const { data, isLoading, error } = useContacts();
   // const contacts = data?.contacts;
   // console.log("Contact GHL Page", contacts);
->>>>>>> contact-context
 
   const styles = useSpring({
     to: async (next, cancel) => {
@@ -74,18 +68,8 @@ const ContactsGHLPage = () => {
       </animated.div>
       <Row className={"grid gap-3 grid-auto-fit p-1"}>
         <Box className={""}>
-<<<<<<< HEAD
-          {/* {data?.map((contact, index) => (
-            <div key={index}>
-              <p>Email: {contact.email}</p>
-            </div>
-          ))} */}
-
-          {/* <ContactsList contacts={contacts} /> */}
-=======
           {isLoading && <Spinner />}
           <ContactsList contacts={contacts} />
->>>>>>> contact-context
         </Box>
         <Box className={"border bg-gray-100"}>
           <Outlet />
