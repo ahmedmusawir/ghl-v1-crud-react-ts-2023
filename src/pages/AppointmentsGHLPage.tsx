@@ -5,10 +5,22 @@ import moment from "moment";
 import "react-datepicker/dist/react-datepicker.css";
 import useAppointments from "../hooks/useAppointments";
 import Spinner from "../components/ui-ux/Spinner";
+import {
+  useGetAllProductsQuery,
+  useGetSingleProductQuery,
+  useGetProductCategoriesQuery,
+  useGetProductByCategoryQuery,
+} from "../RTK_APPOINTMENTS/services/dummyTriggerApi";
+import { skipToken } from "@reduxjs/toolkit/query/react";
 
 const AppointmentsGHLPage = () => {
   const [startDate, setStartDate] = useState<Date | null>(null);
   const [endDate, setEndDate] = useState<Date | null>(null);
+
+  const { data: allProducts, isFetching: isFetchingAllProducts } =
+    useGetAllProductsQuery();
+
+  // console.log("Dummy Json Data:", allProducts?.products);
 
   const handleStartDateChange = (date: Date | null) => {
     setStartDate(date);
@@ -30,20 +42,20 @@ const AppointmentsGHLPage = () => {
     console.log("End Date in Milliseconds: ", endMilliseconds);
   };
 
-  const { data, error, isLoading } = useAppointments({
-    calendarId: "LtoA6eEnqtWbvggtrsVv",
-    startDate: 1686618166716,
-    endDate: 1688062098126,
-    includeAll: true,
-  });
+  // const { data, error, isLoading } = useAppointments({
+  //   calendarId: "LtoA6eEnqtWbvggtrsVv",
+  //   startDate: 1686618166716,
+  //   endDate: 1688062098126,
+  //   includeAll: true,
+  // });
 
-  const appointments = data?.appointments;
+  // const appointments = data?.appointments;
 
-  if (isLoading) return <Spinner />;
+  // if (isLoading) return <Spinner />;
 
-  if (error) return <h1>A Moose error has occured! </h1>;
+  // if (error) return <h1>A Moose error has occured! </h1>;
 
-  console.log("All Appointments", data);
+  // console.log("All Appointments", data);
 
   return (
     <Container className={""} FULL pageTitle={"Appointments"}>
@@ -84,7 +96,7 @@ const AppointmentsGHLPage = () => {
         >
           <h3 className="text-primary">Appointments</h3>
           <hr />
-          <Box className="grid gap-3 grid-auto-fit p-1">
+          {/* <Box className="grid gap-3 grid-auto-fit p-1">
             {appointments?.map((appointment) => (
               <div
                 className="card w-full bg-primary text-primary-content"
@@ -117,7 +129,7 @@ const AppointmentsGHLPage = () => {
                 </div>
               </div>
             ))}
-          </Box>
+          </Box> */}
         </Box>
       </Row>
     </Container>

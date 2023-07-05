@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@emailjs/browser": "^3.11.0",
+    "@reduxjs/toolkit": "^1.9.5",
     "@tanstack/react-query": "4.28",
     "@tanstack/react-query-devtools": "4.28",
     "@testing-library/jest-dom": "^5.16.5",
@@ -25,6 +26,7 @@
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.45.0",
     "react-icons": "^4.8.0",
+    "react-redux": "^8.1.1",
     "react-router-dom": "^6.10.0",
     "react-scripts": "5.0.1",
     "react-spring": "^9.7.1",

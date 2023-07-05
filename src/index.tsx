@@ -7,6 +7,8 @@ import router from "./routes";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { UserProvider } from "./CONTEXT_GHL_CRUD/contexts/UserContext";
 import { ContactProvider } from "./CONTEXT_GHL_CRUD/contexts/ContactContext";
+import { Provider } from "react-redux";
+import store from "./RTK_APPOINTMENTS/store/store";
 
 const queryClient = new QueryClient();
 
@@ -16,13 +18,15 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     {/* <App /> */}
-    <ContactProvider>
-      <UserProvider>
-        <QueryClientProvider client={queryClient}>
-          <RouterProvider router={router} />
-        </QueryClientProvider>
-      </UserProvider>
-    </ContactProvider>
+    <Provider store={store}>
+      <ContactProvider>
+        <UserProvider>
+          <QueryClientProvider client={queryClient}>
+            <RouterProvider router={router} />
+          </QueryClientProvider>
+        </UserProvider>
+      </ContactProvider>
+    </Provider>
   </React.StrictMode>
 );
 

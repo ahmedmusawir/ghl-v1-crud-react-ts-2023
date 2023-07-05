@@ -39,7 +39,8 @@ const Navbar = ({ className }: Props) => {
           <NavItem to="/users">Users</NavItem>
           <NavItem to="/appointments">Appointments</NavItem>
           <NavItem to="/slots">Slots</NavItem>
-          <NavItem to="/iframe">Responsive</NavItem>
+          <NavItem to="/rtk">RTK Test</NavItem>
+          {/* <NavItem to="/iframe">Responsive</NavItem> */}
         </ul>
       </div>
       <div className="navbar-end  sm:hidden">
