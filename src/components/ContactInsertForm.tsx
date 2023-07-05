@@ -1,15 +1,8 @@
-import React from "react";
+import { v4 as uuidv4 } from "uuid";
 import { useForm } from "react-hook-form";
 import { Contact } from "../entities";
-import useAddContact from "../hooks/useAddContact";
-
-// type FormData = {
-//   firstName: string;
-//   lastName: string;
-//   email: string;
-//   phone: string;
-//   company: string;
-// };
+import useAddContact from "../CONTEXT_GHL_CRUD/hooks/contacts/useAddContact";
+// import useAddContact from "../hooks/useAddContact";
 
 const ContactInsert = () => {
   const {
@@ -18,13 +11,14 @@ const ContactInsert = () => {
     formState: { errors },
   } = useForm<Contact>();
 
-  const addContact = useAddContact();
+  // NED ADD CONTACT W/ CONTEXT/REDUCER
+  const { addContact, error, isLoading } = useAddContact();
+
+  // OLD ADD CONTACT W/ REACT QUERY
+  // const addContact = useAddContact();
 
   const onSubmit = (contact: Contact) => {
-    // e.preventDefault();
-    console.log(contact);
-    addContact.mutate(contact);
-    // window.location.reload();
+    addContact(contact);
   };
 
   return (
