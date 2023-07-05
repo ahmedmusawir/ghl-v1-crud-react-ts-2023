@@ -1,11 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.scss";
-import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { RouterProvider } from "react-router-dom";
 import router from "./routes";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { UserProvider } from "./CONTEXT_GHL_CRUD/contexts/UserContext";
+import { ContactProvider } from "./CONTEXT_GHL_CRUD/contexts/ContactContext";
 
 const queryClient = new QueryClient();
 
@@ -15,9 +16,13 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     {/* <App /> */}
-    <QueryClientProvider client={queryClient}>
-      <RouterProvider router={router} />
-    </QueryClientProvider>
+    <ContactProvider>
+      <UserProvider>
+        <QueryClientProvider client={queryClient}>
+          <RouterProvider router={router} />
+        </QueryClientProvider>
+      </UserProvider>
+    </ContactProvider>
   </React.StrictMode>
 );
 

@@ -1,5 +1,4 @@
 import axios from "axios";
-import { AppointmentSlots } from "../entities";
 
 const apiKey = process.env.REACT_APP_GHL_API_KEY;
 
